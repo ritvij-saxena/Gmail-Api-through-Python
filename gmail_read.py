@@ -50,7 +50,7 @@ label_id_two = 'UNREAD'
 unread_msgs = GMAIL.users().messages().list(userId='me',labelIds=[label_id_one, label_id_two]).execute()
 
 # We get a dictonary. Now reading values for the key 'messages'
-mssg_list = unread_msgs['messages'] if ('messages' in unread_msgs and unread_msgs['messages']) else []
+mssg_list = unread_msgs.get('messages', [])
 
 print ("Total unread messages in inbox: ", str(len(mssg_list)))
 
